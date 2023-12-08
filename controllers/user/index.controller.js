@@ -1,5 +1,5 @@
-import saludar from "./saludar.controller";
-import despedir from "./despedir.controller";
+import saludar from "./saludar.controller.js";
+import despedir from "./despedir.controller.js";
 
 export default {    
     saludar,
