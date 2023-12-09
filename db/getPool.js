@@ -34,3 +34,5 @@ const getPool = async () => {
     console.error(error);
    }
 }
+
+export default getPool;
