@@ -39,8 +39,20 @@ const internalServerError = (msg, code = 'INTERNAL_SERVER_ERROR') => {
     throw err;
 }
 
+const badRequestError = (msg, code = 'BAD_REQUEST_ERROR') => {
+    let err = new Error(msg);
+    err.code = code;
+    err.httpStatus = 400;
+    err.message = msg;
+    throw err;
+}
+
 const sendEmailError = (msg, code = 'SEND_EMAIL_ERROR') => {
     internalServerError(msg, 'SEND_EMAIL_ERROR');
+}
+
+const schemaValidationError = (msg = 'Error en la validación de los datos') => {
+    badRequestError(msg);
 }
 export default {
     conflictError,
@@ -48,5 +60,7 @@ export default {
     notAuthorizedError,
     forbiddenError,
     internalServerError,
-    sendEmailError
+    sendEmailError,
+    badRequestError,
+    schemaValidationError
 }
