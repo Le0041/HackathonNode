@@ -1,12 +1,12 @@
 import getPool from '../../db/getPool.js'
 import errors from '../../helpers/error.helpers.js' 
 
-const main = async (username, password, email , registrationCode) => {
+const main = async (username, password, email, registrationCode) => {
 
     try {
         const pool = await getPool();
         const sqlQuery = 'INSERT INTO users (username, password, email, registrationCode) VALUES (?, ?, ?, ?)';
-        const values = [username, password, email, registrationCode];
+        const values = [username, password.PromiseResult, email, registrationCode];
         const [response] = await pool.query(sqlQuery,values);
         
         if (response.affectedRows !== 1) {
