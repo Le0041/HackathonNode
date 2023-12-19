@@ -16,6 +16,7 @@ const main = async (req,res,next) => {
 
         //Validamos que no exista un usuario ya registrado
         const users = await userService.getByUsernameOrEmail(email, username);
+          
         if(users.length > 0) {
             errors.conflictError('Ya existe un usuario con ese email o username', 'USER_ALREADY_EXISTS');
         }
@@ -27,7 +28,7 @@ const main = async (req,res,next) => {
         await userService.register(email, username, passwordEncoded, registrationCode);
 
         //enviamos Email
-        //await userService.registerSendEmail(email, registrationCode);
+        await userService.registerSendEmail(email, registrationCode);
 
         res.send({
             status: "success",

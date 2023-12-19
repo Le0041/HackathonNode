@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import errors from './error.helpers/errors.helper.js';
+import errors from '../helpers/error.helpers.js';
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
